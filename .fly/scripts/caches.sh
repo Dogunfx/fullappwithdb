@@ -4,3 +4,4 @@
 /usr/bin/php /var/www/html/artisan route:cache --no-ansi -q
 /usr/bin/php /var/www/html/artisan view:cache --no-ansi -q
 /usr/bin/php /var/www/html/artisan migrate --force
+/usr/bin/php /var/www/html/artisan storage:link
