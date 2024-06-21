@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for fullappwithdb-damp-sea-6687 on 2024-06-21T14:18:07+01:00
+# fly.toml app configuration file generated for fullappwithdb on 2024-06-21T15:08:00+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'fullappwithdb-damp-sea-6687'
+app = 'fullappwithdb'
 primary_region = 'ams'
 console_command = 'php /var/www/html/artisan tinker'
 
@@ -17,7 +17,8 @@ console_command = 'php /var/www/html/artisan tinker'
 
 [env]
   APP_DEBUG = 'true'
-  APP_ENV = 'local'
+  APP_ENV = 'production'
+  APP_NAME = 'My App'
   DB_CONNECTION = 'sqlite'
   DB_DATABASE = '/var/www/html/storage/database/database.sqlite'
   LOG_CHANNEL = 'stderr'
@@ -25,7 +26,6 @@ console_command = 'php /var/www/html/artisan tinker'
   LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
-  APP_NAME='My App'
 
 [[mounts]]
   source = 'storage_vol'
