@@ -14,4 +14,5 @@ if [ ! -d "$FOLDER_DB" ]; then
     echo "$FOLDER_DB is not a directory, initializing database" 
     mkdir /var/www/html/storage/database
     touch /var/www/html/storage/database/database.sqlite
+    echo "database.sqlite files has been created on /var/www/html/storage/database" 
 fi

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Illuminate\Filesystem\Filesystem;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,15 +14,31 @@ Route::get('/', function () {
 
 
 Route::get("/check-db", function () {
-    $check  =  Storage::has("/var/www/html/storage/database/database.sqlite");
+    $check  =  Storage::exists("/var/www/html/storage/database/database.sqlite");
+    if ($check) {
+        return "Database exist";
+    } else {
+        return "False no database onn /var/www/html/storage/database/database.sqlite";
+    }
 
     return $check;
+});
+
+Route::get("/get-path", function () {
+    $contents = (new Filesystem)->allFiles('/var/www/html/storage');
+    return $contents;
 });
 
 Route::get("/run-command", function () {
     //  $output = Artisan::handle('my:command', ['--argument' => 'value']);
     $rst = Artisan::call('migrate');
     return $rst;
+});
+
+Route::get('/db-connection', function () {
+    $output = new BufferedOutput;
+    $rst = Artisan::call('db:show',[], $output);
+    return $output;
 });
 
 Route::get("/run-handle", function () {
